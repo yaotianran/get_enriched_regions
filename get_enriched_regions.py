@@ -1,16 +1,14 @@
 #!/usr/bin/env python
-# usage: bamstat_py [OPTIONS] bam_file
+# usage: get_enriched_regions.py [OPTIONS] bam_file
 # v0.1a
 import os
 import sys
 import argparse
 import collections
 import statistics
-import pprint
-import math
-import pysam
 import os.path as path
-import pandas as pd
+import pysam
+
 
 SELFPATH = path.dirname(__file__)
 parser_ar = argparse.ArgumentParser(prog='get_enriched_regions',
@@ -262,7 +260,11 @@ def main(argvList=sys.argv, argv_int=len(sys.argv)):
                              verbose = IS_VERBOSE)
 
     result_list = []
+    i = 0
     for region in region_list:
+        i += 1
+
+        print()
         result_dict = extract_info(bam_file, region)
         result_list.append(result_dict)
 
